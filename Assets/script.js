@@ -9,31 +9,39 @@ var phase3El = document.querySelector("#phase3");
 var questionNumberEl = document.querySelector("#question-number");
 var questionTextEl = document.querySelector("#question-text");
 
+var correctEl = document.querySelector("#correct");
+var wrongEl = document.querySelector("#wrong");
+
 var choiceAel = document.querySelector("#choiceA");
 var choiceBel = document.querySelector("#choiceB");
 var choiceCel = document.querySelector("#choiceC");
 var choiceDel = document.querySelector("#choiceD");
-var choice = document.querySelector(".choice");
+
+var yourScoreEl = document.querySelector("#your-score");
 
 var startBtn = document.querySelector("#start");
+var submitBtn = document.querySelector("#submitScore");
 
 //declare important variables
 var questionCurrent = 0;
 var userScore = 0;
 var yourAnswer = '';
 
-var timeLeft = 100;
+var timeLeft = 60;
 var timesUp = 0;
+var gameOver = false;
 
 countdownEl.textContent = "0";
 
 //Event Listener
 startBtn.addEventListener('click', startGame);
+submitBtn.addEventListener('click', storeData);
 
 choiceAel.addEventListener('click', storeAnswer);
 choiceBel.addEventListener('click', storeAnswer);
 choiceCel.addEventListener('click', storeAnswer);
 choiceDel.addEventListener('click', storeAnswer);
+
 
 //When Start Game btn is clicked
 function startGame () {
@@ -43,26 +51,33 @@ function startGame () {
     phase1El.style.display = "none";
     phase2El.style.display = "block";
 
+    displayQuestions();
+
     //Start Countdown
     var countDown = setInterval(
         function() {
 
             countdownEl.textContent = timeLeft;
         
-            if(timesUp === timeLeft){
+            if(timesUp >= timeLeft){
                 countdownEl.textContent = "0";
                 clearInterval(countDown);
+                showResults();
             }
         
             if(timeLeft > timesUp){
                 timeLeft--;
                 countdownEl.textContent = timeLeft;
+                correctEl.style.display = "none";
+                wrongEl.style.display = "none";
             } 
+
+            if (gameOver == true){
+                clearInterval(countDown);
+            }
         
         }
         ,1000);
-
-    displayQuestions();
 
 }
 
@@ -74,16 +89,10 @@ function displayQuestions() {
         console.log(questionList[questionCurrent].question);
         questionTextEl.textContent = questionList[questionCurrent].question;
 
-        console.log(questionList[questionCurrent].choices[0]);
+        console.log(questionList[questionCurrent].choices);
         choiceAel.textContent = questionList[questionCurrent].choices[0];
-
-        console.log(questionList[questionCurrent].choices[1]);
         choiceBel.textContent = questionList[questionCurrent].choices[1];
-
-        console.log(questionList[questionCurrent].choices[2]);
         choiceCel.textContent = questionList[questionCurrent].choices[2];
-
-        console.log(questionList[questionCurrent].choices[3]);
         choiceDel.textContent = questionList[questionCurrent].choices[3];
 
     }
@@ -91,24 +100,32 @@ function displayQuestions() {
 //Store the choice as an answer on button click, then run verification
 function storeAnswer () {
 
-    var yourAnswer = choice.val;
+    var yourAnswer = event.target.textContent;
+    console.log(yourAnswer);
 
     //Check the answer againt the current questions answer
     function verifyAnswer () {
     if (yourAnswer == questionList[questionCurrent].answer) {
         questionCurrent++;
+        correctEl.style.display = "block";
     }
     else {
-        timeLeft = timeLeft - 10;
+        timeLeft = timeLeft - 20;
         questionCurrent++;
+        wrongEl.style.display = "block";
     }
 }
     verifyAnswer();
 
-    if (questionCurrent <= questionList.length) {
+    //Decide if the next question is displayed, or if results are next
+    if (questionCurrent < questionList.length) {
         displayQuestions();
     }
     else {
+        userScore = timeLeft;
+        console.log(userScore);
+
+        gameOver = true;
         showResults();
     }
  
@@ -116,8 +133,24 @@ function storeAnswer () {
 
 //Show the results page
 function showResults() {
-    
+
+    console.log("Game over.");
+    phase2El.style.display = "none";
+    phase3El.style.display = "block";
+
+    yourScoreEl.textContent = userScore;
+
 }
 
+//Store Data, the score and the initials
+function storeData() {
+
+    userInitials = document.querySelector("#initials").value;
+    console.log(userInitials);
+
+    //localStorage.setItem(user, JSON.stringify(userInitials));
+    //localStorage.setItem(score, JSON.stringify(userScore));
+
+}
 
 

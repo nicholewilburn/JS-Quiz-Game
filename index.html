@@ -29,7 +29,7 @@
         <!-- Landing page -->
         <span id="phase1">
             <h1>Test your knowledge!</h1>
-            <p>Answers the questions correctly in time. Incorrect answers lose 10 seconds.</p>
+            <p>Answers the questions correctly in time. You will have 60 seconds. Incorrect answers lose 20 seconds. There are 5 questions. Good luck!</p>
 
             <button id="start">Start Quiz.</button>
         </span>
@@ -39,10 +39,18 @@
             <h1>Question <span id="question-number"></span>!</h1>
             <p id="question-text"></p>
 
-            <button id="choiceA" class="choice"></button><br>
-            <button id="choiceB" class="choice"></button><br>
-            <button id="choiceC" class="choice"></button><br>
-            <button id="choiceD" class="choice"></button><br>
+            <button id="choiceA"></button><br>
+            <button id="choiceB"></button><br>
+            <button id="choiceC"></button><br>
+            <button id="choiceD"></button><br>
+            <span id="correct">
+                <hr>
+                <h2>CORRECT</h2>
+            </span>
+            <span id="wrong">
+                <hr>
+                <h2>WRONG</h2>
+            </span>
         </span>
 
         <!-- Results page -->
