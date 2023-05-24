@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="Assets\style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=B612+Mono&family=Rubik+Puddles&display=swap" rel="stylesheet">
+
+    <title>Javascript Quiz Game</title>
+</head>
+<body>
+
+    <header>
+        <span id="page-name">Javascript Quiz Game</span>
+        <nav>
+            <a href="scores.html">View Highscores</a>
+            <p>Time: <span id="countdown"></span></p>
+        </nav>
+    </header>
+
+    <main id="quiz-container">
+
+        <!-- Landing page -->
+        <span id="phase1">
+            <h1>Test your knowledge!</h1>
+            <p>Answers the questions correctly in time. Incorrect answers lose 10 seconds.</p>
+
+            <button id="start">Start Quiz.</button>
+        </span>
+
+        <!-- Quiz game screen -->
+        <span id="phase2">
+            <h1>Question <span id="questionNumber"></span>!</h1>
+            <p id="questionText"></p>
+
+            <button id="choiceA"></button><br>
+            <button id="choiceB"></button><br>
+            <button id="choiceA"></button><br>
+            <button id="choiceA"></button><br>
+        </span>
+
+        <!-- Results page -->
+        <span id="phase3">
+            <h1>Results!</h1>
+            <p>Your final score is <span id="yourScore"></span></p>
+
+            <p>Enter your initials: <input type="text" id="initials"> <button id="submitScore">Submit</button></p>
+        </span>
+
+    </main>
+    
+<script href="Assets/script.js"></script>
+
+</body>
+</html>
