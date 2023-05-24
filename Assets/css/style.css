@@ -6,6 +6,7 @@ header {
     width:100%;
     text-align:center;
     background-color: black;
+    border:0px;
 }
 #page-name {
     width: 100%;
@@ -31,18 +32,36 @@ nav p {
     padding: 20px;
 }
 #quiz-container {
-    width:50%;
+    width:40%;
     padding-top:40px;
     margin: auto;
     display:flex;
     justify-content: center;
 }
+p {
+    padding: 20px;
+}
+button {
+    background-color: black;
+    color: lightcyan;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    padding: 5px;
+    margin: 10px;
+}
 #phase1 {
     display: block;
+    text-align: center;
 }
 #phase2 {
     display: none;
 }
 #phase3 {
+    display: none;
+}
+#correct {
+    display: none;
+}
+#wrong {
     display: none;
 }
