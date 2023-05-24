@@ -33,6 +33,14 @@ var gameOver = false;
 
 countdownEl.textContent = "0";
 
+//Local storage array holding objects for each high score submitted
+highScoreData = localStorage.getItem("highscores");
+console.log(highScoreData);
+
+//var highScoreParse = JSON.parse(highScoreData);
+//highScores.push(highScoreParse);
+//console.log(highScores);
+
 //Event Listener
 startBtn.addEventListener('click', startGame);
 submitBtn.addEventListener('click', storeData);
@@ -148,9 +156,48 @@ function storeData() {
     userInitials = document.querySelector("#initials").value;
     console.log(userInitials);
 
-    //localStorage.setItem(user, JSON.stringify(userInitials));
-    //localStorage.setItem(score, JSON.stringify(userScore));
+    scoreObject = {
+        "user": userInitials,
+        "score": userScore,
+    }
+    console.log(scoreObject);
 
+    console.log(highScoreData);
+
+    var scoreString = JSON.stringify(scoreObject);
+    console.log(scoreString);
+    
+    highScoreData.join(scoreString);
+    console.log(highScoreData);
+
+    //if (highScores == ''){
+     //   highScores[0] = scoreObject;
+    //}
+    //else {
+     //   highScores.push(scoreObject);
+    //}
+
+    //var highScoresString = JSON.stringify(highScores);
+    //localStorage.setItem('highscores', highScoresString);
+
+resetGame();
+
+}
+
+//function to make sure the game resets variables correwctly
+function resetGame() {
+    phase3El.style.display = "none";
+    phase1El.style.display = "block";
+
+    questionCurrent = 0;
+    userScore = 0;
+    yourAnswer = '';
+
+    timeLeft = 60;
+    timesUp = 0;
+    gameOver = false;
+
+    countdownEl.textContent = "0";
 }
 
 

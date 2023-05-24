@@ -47,6 +47,7 @@ button {
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
     padding: 5px;
+    margin: 10px;
 }
 #phase1 {
     display: block;
