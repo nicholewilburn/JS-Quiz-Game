@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link rel="stylesheet" href="Assets\reset.css" />
     <link rel="stylesheet" href="Assets\style.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,26 +36,27 @@
 
         <!-- Quiz game screen -->
         <span id="phase2">
-            <h1>Question <span id="questionNumber"></span>!</h1>
-            <p id="questionText"></p>
+            <h1>Question <span id="question-number"></span>!</h1>
+            <p id="question-text"></p>
 
-            <button id="choiceA"></button><br>
-            <button id="choiceB"></button><br>
-            <button id="choiceA"></button><br>
-            <button id="choiceA"></button><br>
+            <button id="choiceA" class="choice"></button><br>
+            <button id="choiceB" class="choice"></button><br>
+            <button id="choiceC" class="choice"></button><br>
+            <button id="choiceD" class="choice"></button><br>
         </span>
 
         <!-- Results page -->
         <span id="phase3">
             <h1>Results!</h1>
-            <p>Your final score is <span id="yourScore"></span></p>
+            <p>Your final score is <span id="your-score"></span></p>
 
             <p>Enter your initials: <input type="text" id="initials"> <button id="submitScore">Submit</button></p>
         </span>
 
     </main>
     
-<script href="Assets/script.js"></script>
+<script src="Assets/questions.js"></script>
+<script src="Assets/script.js"></script>
 
 </body>
 </html>
