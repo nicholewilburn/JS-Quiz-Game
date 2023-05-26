@@ -34,7 +34,7 @@ var gameOver = false;
 countdownEl.textContent = "0";
 
 //Local storage
-var highScores = localStorage.getItem("highscores");
+var highScores = JSON.parse(localStorage.getItem("highscores"));
 if (highScores == null) {
     highScores = [];
 }

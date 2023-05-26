@@ -1,6 +1,9 @@
 
 //Load the scores
 var highScores = JSON.parse(localStorage.getItem('highscores'));
+
+highScores.sort();
+highScores.reverse();
 console.log(highScores);
 
 
