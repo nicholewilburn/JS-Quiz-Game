@@ -65,3 +65,29 @@ button {
 #wrong {
     display: none;
 }
+
+#hs-page, footer {
+    width: 50%;
+    margin: auto;
+    padding-top:40px;
+    justify-content: center;
+    display: flex;
+}
+#hs-col {
+    display:inline-block;
+    margin: 20px;
+    text-align: left;
+}
+#hs-col h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight:bolder;
+    text-decoration: underline;
+    font-size: 36px;
+    padding-bottom:10px;
+}
+#names {
+    color: lightcyan;
+}
+#scores {
+    color: purple;
+}

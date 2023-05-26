@@ -33,13 +33,11 @@ var gameOver = false;
 
 countdownEl.textContent = "0";
 
-//Local storage array holding objects for each high score submitted
-highScoreData = localStorage.getItem("highscores");
-console.log(highScoreData);
-
-//var highScoreParse = JSON.parse(highScoreData);
-//highScores.push(highScoreParse);
-//console.log(highScores);
+//Local storage
+var highScores = localStorage.getItem("highscores");
+if (highScores == null) {
+    highScores = [];
+}
 
 //Event Listener
 startBtn.addEventListener('click', startGame);
@@ -156,29 +154,19 @@ function storeData() {
     userInitials = document.querySelector("#initials").value;
     console.log(userInitials);
 
+    if (userScore < 0) {
+        userScore = 0;
+    }
+
     scoreObject = {
         "user": userInitials,
         "score": userScore,
     }
     console.log(scoreObject);
 
-    console.log(highScoreData);
+    highScores.push(scoreObject);
 
-    var scoreString = JSON.stringify(scoreObject);
-    console.log(scoreString);
-    
-    highScoreData.join(scoreString);
-    console.log(highScoreData);
-
-    //if (highScores == ''){
-     //   highScores[0] = scoreObject;
-    //}
-    //else {
-     //   highScores.push(scoreObject);
-    //}
-
-    //var highScoresString = JSON.stringify(highScores);
-    //localStorage.setItem('highscores', highScoresString);
+    localStorage.setItem("highscores", JSON.stringify(highScores));
 
 resetGame();
 
